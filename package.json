@@ -1,0 +1,29 @@
+{
+  "name": "cli-word-guess",
+  "version": "1.0.0",
+  "description": "A simple word guessing game (like hangman) which uses node and inquirer and runs on the command line",
+  "main": "index.js",
+  "scripts": {
+    "test": "None"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krab7191/cli-word-guess.git"
+  },
+  "keywords": [
+    "node",
+    "cli",
+    "hangman",
+    "word-guess",
+    "inquirer"
+  ],
+  "author": "Karsten Rabe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krab7191/cli-word-guess/issues"
+  },
+  "homepage": "https://github.com/krab7191/cli-word-guess#readme",
+  "dependencies": {
+    "inquirer": "^6.1.0"
+  }
+}
