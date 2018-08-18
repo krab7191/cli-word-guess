@@ -16,11 +16,14 @@ function pickWord(list) {
 function promptGuess() {
     iq.prompt([
         {
-            message: "Enter your guess",
+            message: "Enter your guess (or 'quit' to exit)",
             name: "guess"
         }
     ]).then(function (ans) {
-        if (ans.guess.length === 1) {
+        if (ans.guess.toLowerCase() === "quit") {
+            return;
+        }
+        else if (ans.guess.length === 1) {
             var contains = false;
             alreadyGuessed.forEach(function (i) {
                 if (i === ans.guess) {
@@ -42,6 +45,7 @@ function promptGuess() {
                 console.log(theWord.returnWordString() + "\n");
                 if (theWord.numGuessed == theWord.letterArr.length) {
                     console.log("You win!!");
+                    promptRestart();
                 }
                 else {
                     if (!hit) {
@@ -54,6 +58,7 @@ function promptGuess() {
                         });
                         console.log(`The word was ${theWord.returnWordString()}`);
                         console.log("Game over...");
+                        promptRestart();
                     }
                     else {
                         promptGuess();
@@ -62,8 +67,25 @@ function promptGuess() {
             }
         }
         else {
-            console.log("Please guess only one character at a time.");
+            console.log("Please guess a single letter.");
             promptGuess();
+        }
+    });
+}
+
+function promptRestart() {
+    iq.prompt([
+        {
+            message: "Restart?",
+            name: "dat",
+            type: "list",
+            choices: ["Yes", "No"]
+        }
+    ]).then(function (a) {
+        if (a.dat === "Yes") {
+            guesses = 0;
+            alreadyGuessed = [];
+            init();
         }
     });
 }
