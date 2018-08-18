@@ -26,6 +26,9 @@ var Word = function (word) {
             }
         });
         this.numGuessed += addGuesses;
+        if (addGuesses > 0) {
+            return true;
+        }
     };
 };
 

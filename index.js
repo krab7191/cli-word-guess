@@ -38,13 +38,15 @@ function promptGuess() {
                     lettersGuessed += i + ", ";
                 });
                 console.log(`Letters guessed: ${lettersGuessed}`);
-                theWord.guessChar(ans.guess);
+                var hit = theWord.guessChar(ans.guess);
                 console.log(theWord.returnWordString() + "\n");
                 if (theWord.numGuessed == theWord.letterArr.length) {
                     console.log("You win!!");
                 }
                 else {
-                    guesses++;
+                    if (!hit) {
+                        guesses++;
+                    }
                     console.log(`Guesses left: ${(6 - guesses)}`);
                     if (guesses === 6) {
                         theWord.letterArr.forEach(function (i) {
